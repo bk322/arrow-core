@@ -20,7 +20,7 @@ Arrow supports Android out of the box starting on API 21 and up.
 
 We'll be working on a Arrow-Android integration module that adds some helpers and integrations.
 
-### Gradle
+### Gradle (groovy)
 
 #### Basic Setup
 
@@ -152,6 +152,39 @@ To avoid specifying the Arrow version for every dependency, a BOM file is availa
 ```
 
 [Example of use](https://github.com/arrow-kt/arrow-examples/blob/master/build.gradle)
+
+
+### Gradle (kotlin)
+
+#### Basic Setup
+
+In your project's root `build.gradle.kts`, append these repositories to your list:
+
+```kotlin
+repositories {
+    mavenCentral()
+    jcenter()
+    maven {
+      url = uri("https://dl.bintray.com/arrow-kt/arrow-kt/")
+    }
+}
+```
+
+Add the dependencies into the project's `build.gradle.kts`:
+
+##### Arrow Core
+
+```kotlin
+plugins {
+    kotlin("kapt") version "1.4.10"
+}
+
+dependencies {
+    implementation("io.arrow-kt:arrow-core:0.11.0")
+    implementation("io.arrow-kt:arrow-syntax:0.11.0")
+    kapt("io.arrow-kt:arrow-meta:0.11.0")
+}
+```
 
 ### Maven
 
